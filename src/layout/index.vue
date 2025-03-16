@@ -1,7 +1,6 @@
 <template>
   <div :class="classObj" class="app-wrapper">
     <div v-if="device === 'mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
-
     <div class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
         <navbar />
@@ -81,7 +80,7 @@ export default {
 .fixed-header {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   z-index: 9;
   width: calc(100% - #{$sideBarWidth});
   transition: width 0.28s;

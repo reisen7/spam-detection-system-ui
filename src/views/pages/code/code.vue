@@ -28,17 +28,11 @@
     </el-form-item> -->
     <el-form-item label="选择表单">
       <!--      <el-input v-model="form.tabName"></el-input>-->
-      <el-select
-        v-model="form.tabName"
-        placeholder="选择主表" @change="getInputItem">
-        <el-option
-          v-for="item in form.inputList"
-          :key="item.name"
-          :label="item.description"
-          :value="item.name"/>
+      <el-select v-model="form.tabName" placeholder="选择主表" @change="getInputItem">
+        <el-option v-for="item in form.inputList" :key="item.name" :label="item.description" :value="item.name" />
       </el-select>
     </el-form-item>
-<!--    <el-form-item label="显示方式">
+    <!--    <el-form-item label="显示方式">
       <el-radio-group v-model="form.genType">
         <el-radio label="0">常规</el-radio>
         <el-radio label="1">树形</el-radio>
@@ -59,29 +53,20 @@
     <el-form-item label="作者">
       <el-input v-model="form.author"></el-input>
     </el-form-item>
-    <el-form-item
-      v-for="(item, index) in form.mulList"
-      :label="'关联表信息' + (index+1)"
-    >
+    <el-form-item v-for="(item, index) in form.mulList" :label="'关联表信息' + (index + 1)">
       <div style="border:1px solid #dcdfe6;padding: 5px">
         <!--      <el-input v-model="item.target" placeholder="设置字段"></el-input>-->
 
         <el-form-item label="设置字段">
-          <el-select
-            v-model="item.target"
-            placeholder="设置字段">
-            <el-option
-              v-for="item in form.itemList"
-              :key="item.name"
-              :label="item.description"
-              :value="item.name"/>
+          <el-select v-model="item.target" placeholder="设置字段">
+            <el-option v-for="item in form.itemList" :key="item.name" :label="item.description" :value="item.name" />
           </el-select>
         </el-form-item>
         <el-form-item label="说明">
           <el-input v-model="item.modRemark" placeholder="说明"></el-input>
         </el-form-item>
         <el-form-item label="输入方式">
-          <el-select v-model="item.mod" placeholder="输入方式" @change="changeSelectStyle(item)" >
+          <el-select v-model="item.mod" placeholder="输入方式" @change="changeSelectStyle(item)">
             <el-option label="手动输入" value="default"></el-option>
             <el-option label="下拉选择" value="select"></el-option>
             <el-option label="单选按钮" value="radio"></el-option>
@@ -91,36 +76,21 @@
         </el-form-item>
 
         <el-form-item label="查询数据源表">
-          <el-select v-model="item.data"
-                     placeholder="查询数据源表" @change="getDuiyingItem($event,index)">
-            <el-option
-              v-for="it in form.inputList"
-              :key="it.name"
-              :label="it.description"
-              :value="it.name"/>
+          <el-select v-model="item.data" placeholder="查询数据源表" @change="getDuiyingItem($event, index)">
+            <el-option v-for="it in form.inputList" :key="it.name" :label="it.description" :value="it.name" />
           </el-select>
         </el-form-item>
 
         <el-form-item label="对应值字段">
           <!--          <el-input v-model="item.key" placeholder="对应值字段"></el-input>-->
-          <el-select
-            v-model="item.key"
-            placeholder="对应值字段">
-            <el-option
-              v-for="it in item.duiyingList"
-              :label="it.description"
-              :value="it.name"/>
+          <el-select v-model="item.key" placeholder="对应值字段">
+            <el-option v-for="it in item.duiyingList" :label="it.description" :value="it.name" />
           </el-select>
         </el-form-item>
         <el-form-item label="显示值字段">
           <!--          <el-input v-model="item.value" placeholder="显示值字段"></el-input>-->
-          <el-select
-            v-model="item.value"
-            placeholder="显示值字段">
-            <el-option
-              v-for="it in item.duiyingList"
-              :label="it.description"
-              :value="it.name"/>
+          <el-select v-model="item.value" placeholder="显示值字段">
+            <el-option v-for="it in item.duiyingList" :label="it.description" :value="it.name" />
           </el-select>
         </el-form-item>
         <el-form-item label="查询条件">
@@ -130,42 +100,27 @@
           <el-input v-model="item.pageDir" placeholder="引入模块目录"></el-input>
         </el-form-item>
         <el-form-item label="选择方式">
-          <el-radio-group v-model="item.isMul" >
-            <el-radio label="false" v-if="item.mod !== 'checkbox'" >单选</el-radio>
-            <el-radio label="true" v-if="item.mod !== 'radio'" >多选</el-radio>
+          <el-radio-group v-model="item.isMul">
+            <el-radio label="false" v-if="item.mod !== 'checkbox'">单选</el-radio>
+            <el-radio label="true" v-if="item.mod !== 'radio'">多选</el-radio>
           </el-radio-group>
         </el-form-item>
-        <div :id="'middleInfo'+index" style="border:1px solid #dcdfe6;padding: 5px;" v-if="item.isMul !== 'false'">
+        <div :id="'middleInfo' + index" style="border:1px solid #dcdfe6;padding: 5px;" v-if="item.isMul !== 'false'">
           <el-form-item label="选择中间表">
-            <el-select v-model="item.mulTable"
-                       placeholder="选择中间表" @change="getXianShiItem($event,index)">
-              <el-option
-                v-for="item in form.inputList"
-                :key="item.name"
-                :label="item.description"
-                :value="item.name"/>
+            <el-select v-model="item.mulTable" placeholder="选择中间表" @change="getXianShiItem($event, index)">
+              <el-option v-for="item in form.inputList" :key="item.name" :label="item.description" :value="item.name" />
             </el-select>
           </el-form-item>
           <el-form-item label="主表对应字段名称">
             <!--            <el-input v-model="item.mulMainColum" placeholder="多选主表对应字段名称"></el-input>-->
-            <el-select
-              v-model="item.mulMainColum"
-              placeholder="主表对应字段名称">
-              <el-option
-                v-for="it in item.xianshiList"
-                :label="it.description"
-                :value="it.name"/>
+            <el-select v-model="item.mulMainColum" placeholder="主表对应字段名称">
+              <el-option v-for="it in item.xianshiList" :label="it.description" :value="it.name" />
             </el-select>
           </el-form-item>
           <el-form-item label="次表对应字段名称">
             <!--            <el-input v-model="item.mulSecColum" placeholder="多选次表对应字段名称"></el-input>-->
-            <el-select
-              v-model="item.mulSecColum"
-              placeholder="次表对应字段名称">
-              <el-option
-                v-for="it in item.xianshiList"
-                :label="it.description"
-                :value="it.name"/>
+            <el-select v-model="item.mulSecColum" placeholder="次表对应字段名称">
+              <el-option v-for="it in item.xianshiList" :label="it.description" :value="it.name" />
             </el-select>
           </el-form-item>
         </div>
@@ -197,7 +152,7 @@ import formApi from '@/api/generator/form/sysForm'
 import itemApi from '@/api/generator/form/sysFormItem'
 
 export default {
-  data() {
+  data () {
     return {
       loading: false,
       form: {
@@ -210,8 +165,8 @@ export default {
         /* driverName:'com.mysql.cj.jdbc.Driver',*/
         tabName: '',
         packageName: 'com.lanf.business',
-        filePath: 'D:\\home\\Document\\code\\代码生成器\\template\\hadoop\\base_mf_sig_v\\src\\main',
-        frontPath: 'D:\\home\\Document\\code\\代码生成器\\template\\base-front-v\\src',
+        filePath: 'F:\\home\\code\\program\\bigData\\基于hadoop的垃圾邮件检测系统的设计与实现\\spam-detection-system-api\\backend\\src\\main',
+        frontPath: 'F:\home\\code\\program\\bigData\\基于hadoop的垃圾邮件检测系统的设计与实现\\spam-detection-system-ui\\src',
         /* ftlPath:'F:/basemf-sig/src/main/resources/template',*/
         mulList: [],
         searchObj: {}, // 查询表单对象
@@ -220,11 +175,11 @@ export default {
         isGenLeftDept: 'false',
         isLazyDept: 'false'
       },
-      searchForm: {tabName: ""}
+      searchForm: { tabName: "" }
     }
   },
   methods: {
-    save(data) {
+    save (data) {
       return request({
         url: '/code/generator/save',
         method: 'post',
@@ -232,23 +187,23 @@ export default {
       })
     },
 
-    showOrHidMiddleInfo(value,id){
-      if(value == 'false'){
-        document.getElementById(id).style.display='none'
-      }else{
-        document.getElementById(id).style.display='block'
+    showOrHidMiddleInfo (value, id) {
+      if (value == 'false') {
+        document.getElementById(id).style.display = 'none'
+      } else {
+        document.getElementById(id).style.display = 'block'
       }
     },
 
-    changeSelectStyle(item){
-      if(item.mod == 'checkbox'){
+    changeSelectStyle (item) {
+      if (item.mod == 'checkbox') {
         item.isMul = 'true'
-      }else if(item.mod == 'radio'){
+      } else if (item.mod == 'radio') {
         item.isMul = 'false'
       }
     },
 
-    getInputType() {
+    getInputType () {
       formApi.getAllSysForm().then(
         response => {
           //this.list = response.data.list
@@ -257,7 +212,7 @@ export default {
       )
     },
 
-    getInputItem(tabName, type) {
+    getInputItem (tabName, type) {
       this.searchForm.tabName = tabName;
       itemApi.getAllSysFormItem(this.searchForm).then(
         response => {
@@ -267,19 +222,19 @@ export default {
       )
     },
 
-    getDuiyingItem(tabName, index) {
+    getDuiyingItem (tabName, index) {
       this.searchForm.tabName = tabName;
       itemApi.getAllSysFormItem(this.searchForm).then(
         response => {
           //this.list = response.data.list
-          this.$nextTick(function (){
-            this.form.mulList[index].duiyingList= response.data;
+          this.$nextTick(function () {
+            this.form.mulList[index].duiyingList = response.data;
           })
         }
       )
     },
 
-    getXianShiItem(tabName, index) {
+    getXianShiItem (tabName, index) {
       this.searchForm.tabName = tabName;
       itemApi.getAllSysFormItem(this.searchForm).then(
         response => {
@@ -289,7 +244,7 @@ export default {
       )
     },
 
-    onSubmit() {
+    onSubmit () {
       let tabName = this.form.tabName;
       if (tabName == '') {
         this.$message.warning('请填写表名')
@@ -306,10 +261,10 @@ export default {
       })
       console.log('submit!');
     },
-    deleteItem(i) {
+    deleteItem (i) {
       this.form.mulList.splice(i, 1)
     },
-    addItem() {
+    addItem () {
       this.form.mulList.push({
         target: "",
         mod: "",
@@ -322,12 +277,12 @@ export default {
         mulTable: "",
         mulMainColum: "",
         mulSecColum: "",
-        duiyingList:[],
-        xianshiList:[]
+        duiyingList: [],
+        xianshiList: []
       });
     }
   },
-  created() {
+  created () {
     this.getInputType()
   }
 }
