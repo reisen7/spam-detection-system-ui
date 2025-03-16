@@ -1,0 +1,25 @@
+// sidebar
+$menuText: #ff7f50; // 橙红色文本
+$menuActiveText: #32cd32; // 森林绿色活跃状态
+$subMenuActiveText: #ffff00; // 子菜单活跃状态下黄色
+
+$menuBg: #4b0082; // 紫罗兰背景
+$menuHover: #ffa500; // 鼠标悬停时的橙色
+
+$subMenuBg: #8a2be2; // 较深的紫罗兰背景
+$subMenuHover: #ff69b4; // 更深的鼠标悬停背景
+
+$sideBarWidth: 240px; // 增加侧边栏宽度
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}
